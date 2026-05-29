@@ -11,62 +11,38 @@
         </button>
 
         <ul class="navbar-nav navbar-nav-right">
-            {{-- <li class="nav-item dropdown">
-                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
-                    data-bs-toggle="dropdown">
-                    <i class="icon-bell mx-0"></i>
-                    <span class="count"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                    aria-labelledby="notificationDropdown">
-                    <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon bg-success">
-                                <i class="ti-info-alt mx-0"></i>
-                            </div>
-                        </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                            <p class="font-weight-light small-text mb-0 text-muted"> Just now </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon bg-warning">
-                                <i class="ti-settings mx-0"></i>
-                            </div>
-                        </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject font-weight-normal">Settings</h6>
-                            <p class="font-weight-light small-text mb-0 text-muted"> Private message </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon bg-info">
-                                <i class="ti-user mx-0"></i>
-                            </div>
-                        </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject font-weight-normal">New user registration</h6>
-                            <p class="font-weight-light small-text mb-0 text-muted"> 2 days ago </p>
-                        </div>
-                    </a>
-                </div>
-            </li> --}}
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                    <img src="{{ asset('assets/skydash/images/faces/face28.jpg')}}" alt="profile" />
+                    @if (!empty(auth()->user()->image) && file_exists('uploads/users/' . auth()->user()->image))
+                        <img height="30px" src="{{ asset('uploads/users/' . auth()->user()->image) }}"
+                            class="img-circle elevation-2" alt="User Image">
+                    @else
+                        <img src="{{ asset('assets/skydash/images/faces/face28.jpg')}}" alt="profile" />
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item">
-                        <i class="ti-settings text-primary"></i> Settings </a>
-                    <a class="dropdown-item">
-                        <i class="ti-power-off text-primary"></i> Logout </a>
+
+                    <a href="{{ route('cms.changePassword') }}" class="dropdown-item">
+                        <i class="ti-more-alt text-primary"></i> Change Password
+                    </a>
+                    @can('superAdmin', new App\Models\User())
+                        <a href="{{ route('cms.switchUserForm') }}" class="dropdown-item"><i class="ti-reload text-primary"></i>  Switch User </a>
+                    @endcan
+                    @if (session()->has('original_user'))
+                        <a href="{{ route('cms.logoutSwitchUser') }}" class="dropdown-item"> <i class="ti-power-off text-primary"></i> Return Back</a>
+                    @else
+                        <a href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();"
+                            class="dropdown-item">
+                            <i class="ti-power-off text-primary"></i> Logout
+                        </a>
+                    @endif
+
+                    <form action="{{ route('logout') }}" id="logout-form" method="post">
+                        @csrf
+                    </form>
                 </div>
             </li>
-           
+
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
             data-toggle="offcanvas">

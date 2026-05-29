@@ -9,6 +9,6 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        return view('cms.layouts.master');
+        return view('cms.dashboard');
     }
 }
