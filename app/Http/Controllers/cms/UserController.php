@@ -87,7 +87,7 @@ class UserController extends Controller
     {
         $this->authorize("userManager", new User());
 
-        $data['user']       =       User::with(['roles','document'])->find($id);
+        $data['user']       =       User::with(['roles'])->find($id);
 
         return view('cms.user.detail',$data);
     }

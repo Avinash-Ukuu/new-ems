@@ -7,11 +7,13 @@ use App\Http\Requests\RoleRequest;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class RoleController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
@@ -30,7 +32,7 @@ class RoleController extends Controller
     {
         $this->authorize("userManager", new User());
         $data['object']     =   new Role();
-        $data['url']        =   route("role.store");
+        $data['url']        =   route("cms.role.store");
         $data['method']     =   "POST";
 
         return view("cms.role.form", $data);
@@ -52,7 +54,7 @@ class RoleController extends Controller
         $data['object']         =   $role;
         saveLogs($data);
         Session::flash("success", "Role Created");
-        return redirect(route("role.index"));
+        return redirect(route("cms.role.index"));
     }
 
     /**
@@ -74,7 +76,7 @@ class RoleController extends Controller
             Session::flash("error", "Role Already Deleted");
             return back();
         }
-        $data['url']        =   route("role.update", ['role' => $id]);
+        $data['url']        =   route("cms.role.update", ['role' => $id]);
         $data['method']     =   "PUT";
 
         return view("cms.role.form", $data);
@@ -89,7 +91,7 @@ class RoleController extends Controller
         $role                   =   Role::find($id);
         if (empty($role)) {
             Session::flash("error", "Role Already Deleted");
-            return redirect(route("role.index"));
+            return redirect(route("cms.role.index"));
         }
         $data['message']        =   auth()->user()->name . " has updated role '$role->name' to '$request->name'";
         $data['action']         =   "updated";
@@ -101,7 +103,7 @@ class RoleController extends Controller
         $role->update();
         Session::flash("success", "Role Updated");
 
-        return redirect(route("role.index"));
+        return redirect(route("cms.role.index"));
     }
 
     /**
@@ -124,7 +126,7 @@ class RoleController extends Controller
         $role->delete();
         Session::flash("success", "Role Deleted");
 
-        return redirect(route("role.index"));
+        return redirect(route("cms.role.index"));
     }
 
     public function assignPermissionForm(Request $request)
@@ -146,7 +148,7 @@ class RoleController extends Controller
         $role                   =   Role::find($request->id);
         if (empty($role)) {
             Session::flash("error", "Role Already Deleted");
-            return redirect(route("role.index"));
+            return redirect(route("cms.role.index"));
         }
         $role->permissions()->sync($request->permission_id);
         $data['message']        =   auth()->user()->name . " has assigned permissions to '$role->name' role";

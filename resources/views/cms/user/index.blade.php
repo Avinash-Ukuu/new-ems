@@ -3,14 +3,14 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <div class="row">
-                <h4 class="card-title col-6">Users Table</h4>
-                <div class="card-tool col-6 text-end">
-                <a href="{{route('cms.user.create')}}" class="btn btn-inverse-primary btn-fw">Add User</a>
-                </div>
+                <div class="row mb-3">
+                    <h4 class="card-title col-6">Users Table</h4>
+                    <div class="card-tool col-6 text-end">
+                        <a href="{{route('cms.user.create')}}" class="btn btn-inverse-primary btn-fw">Add User</a>
+                    </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table id="example1" class="table">
                         <thead>
                             <tr>
                                 <th>User</th>
@@ -54,4 +54,11 @@
             </div>
         </div>
     </div>
+@endsection
+@section('footerScripts')
+    <script>
+        $(document).ready(function() {
+            $('#example1').DataTable();
+        });
+    </script>
 @endsection

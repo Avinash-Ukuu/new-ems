@@ -22,8 +22,7 @@ class RoleRequest extends FormRequest
      */
      public function rules(): array
     {
-        $id=0;
-        if(request()->has('id')){$id=request()->id;}
+        $id=request()->route('role');
         return [
             'name' => "required|string|max:255|unique:roles,name,$id,id|regex:/^[\p{L}\p{M}\p{N}\p{Pd}\p{Pc}\p{Zs}]+$/u",
         ];

@@ -15,8 +15,6 @@
     <link rel="stylesheet" href="{{ asset('assets/skydash/vendors/mdi/css/materialdesignicons.min.css') }}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <!-- <link rel="stylesheet" href="assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css"> -->
-    <link rel="stylesheet" href="{{ asset('assets/skydash/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/skydash/vendors/ti-icons/css/themify-icons.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/skydash/js/select.dataTables.min.css') }}">
     <!-- End plugin css for this page -->
@@ -30,6 +28,8 @@
     <link rel="stylesheet" href="{{ asset('assets/skydash/select2/css/select2.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('assets/skydash/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/skydash/dataTables/dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/skydash/dataTables/select.dataTables.min.css') }}">
     @yield('headerLinks')
 </head>
 
@@ -64,14 +64,15 @@
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+
     <!-- plugins:js -->
     <script src="{{ asset('assets/skydash/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset('assets/skydash/dataTables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/skydash/dataTables/dataTables.select.min.js') }}"></script>
     <!-- endinject -->
+
     <!-- Plugin js for this page -->
     <script src="{{ asset('assets/skydash/vendors/chart.js/chart.umd.js') }}"></script>
-    <script src="{{ asset('assets/skydash/vendors/datatables.net/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('assets/skydash/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
-    <script src="{{ asset('assets/skydash/vendors/datatables.net-bs5/dataTables.bootstrap5.js') }}"></script>
     <script src="{{ asset('assets/skydash/js/dataTables.select.min.js') }}"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
@@ -82,21 +83,15 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="{{ asset('assets/skydash/js/jquery.cookie.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/skydash/js/dashboard.js') }}"></script>
-    {{-- <script src="{{ asset('assets/skydash/js/Chart.roundedBarCharts.js')}}"></script> --}}
         <!-- Toastr -->
     <script src="{{ asset('assets/skydash/toastr/toastr.min.js') }}"></script>
-    <script src="{{ asset('assets/adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/skydash/select2/js/select2.full.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
             $('.select2').select2({
                 theme: "bootstrap4",
                 allowClear: true
-            });
-
-            $('#summernote').summernote({
-                height: 300,
             });
 
         });
