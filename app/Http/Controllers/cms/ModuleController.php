@@ -7,11 +7,13 @@ use App\Http\Requests\ModuleRequest;
 use App\Models\Module;
 use App\Models\Permission;
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class ModuleController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
@@ -30,7 +32,7 @@ class ModuleController extends Controller
     {
         $this->authorize("superAdmin", new User());
         $data['object']     =   new Module();
-        $data['url']        =   route("module.store");
+        $data['url']        =   route("cms.module.store");
         $data['method']     =   "POST";
 
         return view("cms.module.form", $data);
@@ -52,7 +54,7 @@ class ModuleController extends Controller
         saveLogs($data);
         Session::flash("success", "Module Created");
 
-        return redirect(route("module.index"));
+        return redirect(route("cms.module.index"));
     }
 
     /**
@@ -74,7 +76,7 @@ class ModuleController extends Controller
             Session::flash("error", "Module Already Deleted");
             return back();
         }
-        $data['url']        =   route("module.update", ['module' => $id]);
+        $data['url']        =   route("cms.module.update", ['module' => $id]);
         $data['method']     =   "PUT";
 
         return view("cms.module.form", $data);
@@ -100,7 +102,7 @@ class ModuleController extends Controller
         $module->update();
         Session::flash("success", "Module Updated");
 
-        return redirect(route("module.index"));
+        return redirect(route("cms.module.index"));
     }
 
     /**
@@ -123,6 +125,6 @@ class ModuleController extends Controller
         $module->delete();
         Session::flash("success", "Module Deleted");
 
-        return redirect(route("module.index"));
+        return redirect(route("cms.module.index"));
     }
 }

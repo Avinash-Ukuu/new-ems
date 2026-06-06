@@ -11,13 +11,13 @@
                     @endif
                     <div class="form-group">
                         <label for="exampleInputUsername1">Name</label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" name="name"
+                        <input type="text" class="form-control name" id="exampleInputUsername1" name="name"
                             placeholder="Name" value="{{ old('name', $object->name) }}">
 
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email"
                             name="email" value="{{ old('email', $object->email) }}">
 
                     </div>
@@ -35,7 +35,7 @@
                                 disabled placeholder="Upload Image" id="fileName">
 
                             <span class="input-group-append ms-2">
-                                <button class="file-upload-browse btn btn-primary" type="button">
+                                <button class="file-upload-browse btn btn-primary"  type="button">
                                     Upload
                                 </button>
                             </span>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="mt-4">
-                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button type="submit" id="submit" class="btn btn-primary me-2">Submit</button>
                         <a href="{{ url()->previous() }}" class="btn btn-light">
                             Cancel
                         </a>
@@ -120,6 +120,50 @@
 
             reader.readAsDataURL(file);
 
+        });
+
+        $(document).ready(function() {
+            var name = $(".name").val();
+            if (name == "") {
+                $('#submit').prop('disabled', true);
+            }
+            $('.name').on('input', function() {
+                var inputValue = $(this).val();
+                var numeric = /^\d/;
+                var specialCharacter = "!@#\\$%\^&*()_\\-+=\\[\\]{};':\",./<>?\\|`~";
+                var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u2600-\u27FF]/;
+                var hasSpecialCharacter = false;
+                var hasnumeric = false;
+
+                for (var i = 0; i < specialCharacter.length; i++) {
+                    if (inputValue.includes(specialCharacter[i])) {
+                        hasSpecialCharacter = true;
+                        break;
+                    }
+                }
+
+                if (/\d/.test(inputValue)) {
+                    hasnumeric = true;
+                }
+
+                if (hasSpecialCharacter || emojiRegex.test(inputValue) || hasnumeric) {
+                    $('#submit').prop('disabled', true);
+                } else {
+                    $('#submit').prop('disabled', false);
+                }
+            });
+
+
+            $('#email').on('input', function() {
+                const email = $('#email').val().trim();
+                const gmailRegex = /@gmail\.com$/i;
+
+                if (email === '' || gmailRegex.test(email)) {
+                    $('#submit').prop('disabled', false);
+                } else {
+                    $('#submit').prop('disabled', true);
+                }
+            });
         });
     </script>
 @endsection

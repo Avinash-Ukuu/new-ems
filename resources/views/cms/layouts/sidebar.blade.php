@@ -17,6 +17,8 @@
                  <ul class="nav flex-column sub-menu">
                      <li class="nav-item"> <a class="nav-link" href="{{ route('cms.user.index') }}">Users</a></li>
                      <li class="nav-item"> <a class="nav-link" href="{{ route('cms.role.index') }}">Roles</a></li>
+                     <li class="nav-item"> <a class="nav-link" href="{{ route('cms.permission.index') }}">Permission</a></li>
+                     <li class="nav-item"> <a class="nav-link" href="{{ route('cms.module.index') }}">Modules</a></li>
                  </ul>
              </div>
          </li>

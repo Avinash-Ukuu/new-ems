@@ -3,16 +3,34 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">{{ $object->id ? 'Edit Role' : 'Create Role' }}</h4>
+                <h4 class="card-title">{{ $object->id ? 'Edit Permission' : 'Create Permission' }}</h4>
                 <form class="forms-sample" action="{{ $url }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if ($object->id)
                         @method('PUT')
                     @endif
+
                     <div class="form-group">
-                        <label for="exampleInputUsername1">Role Name</label>
+                        <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Select Module</label>
+                        <div class="col-sm-12">
+                            <select name="module_id" id="module_id" class="form-select select2" required>
+
+                                <option value="">Select Module</option>
+
+                                @foreach ($modules as $id => $name)
+                                    <option value="{{ $id }}" {{ $object->module_id == $id ? 'selected' : '' }}>
+                                        {{ $name }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputUsername1">Permission Name</label>
                         <input type="text" class="form-control name" id="exampleInputUsername1" name="name"
-                            placeholder="Name" value="{{ old('name', $object->name) }}">
+                            placeholder="Enter Permission Name" value="{{ old('name', $object->name) }}">
 
                     </div>
                     <div class="form-group">
@@ -28,17 +46,17 @@
                             Cancel
                         </a>
                     </div>
+
                 </form>
             </div>
         </div>
     </div>
 @endsection
 @section('footerScripts')
- <script>
+    <script>
         $(document).ready(function() {
-            var name    =   $(".name").val();
-            if(name == "")
-            {
+            var name = $(".name").val();
+            if (name == "") {
                 $('#submit').prop('disabled', true);
             }
             $('.name').on('input', function() {
@@ -60,7 +78,7 @@
                     hasnumeric = true;
                 }
 
-                if ( hasSpecialCharacter  || emojiRegex.test(inputValue) || hasnumeric) {
+                if (hasSpecialCharacter || emojiRegex.test(inputValue) || hasnumeric) {
                     $('#submit').prop('disabled', true);
                 } else {
                     $('#submit').prop('disabled', false);

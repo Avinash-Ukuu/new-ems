@@ -7,11 +7,13 @@ use App\Http\Requests\PermissionRequest;
 use App\Models\Module;
 use App\Models\Permission;
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class PermissionController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
@@ -31,7 +33,7 @@ class PermissionController extends Controller
         $this->authorize("superAdmin", new User());
         $data['object']         =   new Permission();
         $data['modules']        =   Module::all()->pluck("name", "id")->toArray();
-        $data['url']            =   route("permission.store");
+        $data['url']            =   route("cms.permission.store");
         $data['method']         =   "POST";
 
         return view("cms.permission.form", $data);
@@ -59,7 +61,7 @@ class PermissionController extends Controller
         saveLogs($data);
         Session::flash("success", "Permission Created");
 
-        return redirect(route("permission.index"));
+        return redirect(route("cms.permission.index"));
     }
 
     /**
@@ -82,7 +84,7 @@ class PermissionController extends Controller
             return back();
         }
         $data['modules']    =   Module::all()->pluck("name", "id")->toArray();
-        $data['url']        =   route("permission.update", ['permission' => $id]);
+        $data['url']        =   route("cms.permission.update", ['permission' => $id]);
         $data['method']     =   "PUT";
 
         return view("cms.permission.form", $data);
@@ -114,7 +116,7 @@ class PermissionController extends Controller
         $permission->update();
         Session::flash("success", "Permission Updated");
 
-        return redirect(route("permission.index"));
+        return redirect(route("cms.permission.index"));
     }
 
     /**
@@ -137,6 +139,6 @@ class PermissionController extends Controller
         $permission->delete();
         Session::flash("success", "Permission Deleted");
 
-        return redirect(route("permission.index"));
+        return redirect(route("cms.permission.index"));
     }
 }
