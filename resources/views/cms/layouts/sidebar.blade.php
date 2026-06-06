@@ -7,13 +7,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                aria-controls="ui-basic">
+            <a class="nav-link" data-bs-toggle="collapse" href="#user-management" aria-expanded="false"
+                aria-controls="user-management">
                 <i class="ti-user menu-icon"></i>
                 <span class="menu-title">User Management</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="user-management">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('cms.user.index') }}">Users</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('cms.role.index') }}">Roles</a></li>
@@ -24,13 +24,13 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                aria-controls="ui-basic">
+            <a class="nav-link" data-bs-toggle="collapse" href="#department" aria-expanded="false"
+                aria-controls="department">
                 <i class="mdi mdi-domain menu-icon"></i>
                 <span class="menu-title">Department</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="department">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('cms.department.index') }}">List</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('cms.department.index') }}">Create</a></li>

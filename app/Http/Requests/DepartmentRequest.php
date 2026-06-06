@@ -12,7 +12,7 @@ class DepartmentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,8 +22,20 @@ class DepartmentRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id=request()->route('department');
         return [
-            //
+            'name' => "required|string|max:255|unique:departments,name,$id,id|regex:/^[\p{L}\p{M}\p{N}\p{Pd}\p{Pc}\p{Zs}]+$/u",
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Name field is required.',
+            'name.string'   => 'Name field should be a string.',
+            'name.max'      => 'Name field should not exceed 255 characters.',
+            'name.regex'    => 'Name field should only contain alphabetical characters.',
+            'name.unique'   => 'The name you entered already exists in the database.',
         ];
     }
 }

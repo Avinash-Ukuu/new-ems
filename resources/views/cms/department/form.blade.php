@@ -18,8 +18,8 @@
                     <div class="row m-2">
                         <div class="col-md-3 mb-3">
                             <div class="form-check form-check-primary">
-                                <input class="form-check-input" type="checkbox" name="status" value="{{ $object->status }}"
-                                    id="status" @if (isset($object->status)) checked @endif>
+                                <input class="form-check-input" type="checkbox" name="status" value="1"
+                                    id="status" {{ old('status', $object->status ?? 0) ? 'checked' : '' }}>
                                 <label class="form-check-label" for="status">
                                     Status
                                 </label>

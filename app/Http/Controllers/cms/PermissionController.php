@@ -103,7 +103,7 @@ class PermissionController extends Controller
         $permission                         =   Permission::find($id);
         if (empty($permission)) {
             Session::flash("error", "Permission Already Deleted");
-            return redirect(route("permission.index"));
+            return redirect(route("cms.permission.index"));
         }
         $data['message']                    =   auth()->user()->name . " has updated '$permission->name' to '$request->name'";
         $data['action']                     =   "updated";
