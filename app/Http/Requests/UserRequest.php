@@ -22,10 +22,10 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = request()->route('user');
+        $id = request()->route('role');
         return [
             'name'          => 'required|string|max:255|regex:/^[\p{L}\p{M}\p{N}\p{Pd}\p{Pc}\p{Zs}]+$/u',
-            'email'         => "required|unique:users,email,$id,id",
+            'email'         => "required|unique:roles,name,$id,id",
         ];
     }
 

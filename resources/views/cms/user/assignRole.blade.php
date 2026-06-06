@@ -31,9 +31,15 @@
                                 </div>
                             @endforeach
                         </div>
-                        <button type="submit" id="submit" class="btn btn-primary me-2">
-                            Submit
-                        </button>
+
+                        <div class="mt-4">
+                            <button type="submit" id="submit" class="btn btn-primary me-2">
+                                Submit
+                            </button>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">
+                                Cancel
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>
