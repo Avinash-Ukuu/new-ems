@@ -60,37 +60,23 @@ CREATE TABLE `cache_locks` (
 
 /*Data for the table `cache_locks` */
 
-/*Table structure for table `departments` */
-
-DROP TABLE IF EXISTS `departments`;
-
-CREATE TABLE `departments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `departments` */
-
 /*Table structure for table `designations` */
 
 DROP TABLE IF EXISTS `designations`;
 
 CREATE TABLE `designations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `department_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `level` varchar(255) DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `designations` */
+
+insert  into `designations`(`id`,`name`,`status`,`created_at`,`updated_at`) values 
+(1,'web developer',1,'2026-06-06 15:27:52','2026-06-06 09:57:52');
 
 /*Table structure for table `employees` */
 
@@ -100,7 +86,6 @@ CREATE TABLE `employees` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `employee_code` varchar(255) DEFAULT NULL,
-  `department_id` int(11) DEFAULT NULL,
   `designation_id` int(11) DEFAULT NULL,
   `reporting_manager_id` int(11) DEFAULT NULL,
   `joining_date` date DEFAULT NULL,
@@ -315,7 +300,7 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('bTA2qy7EcmU3nr1wLg4o9Nh4g47KOcnEa4FxQIqc',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNHFOUXh3NXF1RnBBcjlSZUtuT0ZmQWRtdmxKYnZSRVRXNk1qQk8yOCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZGVwYXJ0bWVudC9jcmVhdGUiO3M6NToicm91dGUiO3M6MjE6ImNtcy5kZXBhcnRtZW50LmNyZWF0ZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1780728605);
+('TpAX1pfaYQDzWRoE8oQGjAcPyP0iQqQbDje1ii5s',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRDJhQ1lmUVV3NWJmRXIxTld0a3V2NHZ0Y3NGS1QyTkxteUNQZVZpYyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZGVzaWduYXRpb24iO3M6NToicm91dGUiO3M6MjE6ImNtcy5kZXNpZ25hdGlvbi5pbmRleCI7fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1780740102);
 
 /*Table structure for table `users` */
 

@@ -91,9 +91,9 @@ class ModuleController extends Controller
         $module                   =   Module::find($id);
         if (empty($module)) {
             Session::flash("error", "Module Already Deleted");
-            return redirect(route("module.index"));
+            return redirect(route("cms.module.index"));
         }
-        $data['message']        =   auth()->user()->name . " has updated role '$module->name' to '$request->name'";
+        $data['message']        =   auth()->user()->name . " has updated module '$module->name' to '$request->name'";
         $data['action']         =   "updated";
         $data['module']         =   "module";
         $data['object']         =   $module;

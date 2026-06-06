@@ -5,10 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class Designation extends Model
 {
-    protected $guarded = ["id"];
-
     protected function name(): Attribute
     {
         return Attribute::make(

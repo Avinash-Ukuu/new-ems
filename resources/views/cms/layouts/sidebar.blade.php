@@ -9,7 +9,7 @@
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#user-management" aria-expanded="false"
                 aria-controls="user-management">
-                <i class="ti-user menu-icon"></i>
+                <i class="mdi-account-group mdi menu-icon"></i>
                 <span class="menu-title">User Management</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -24,16 +24,16 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#department" aria-expanded="false"
-                aria-controls="department">
-                <i class="mdi mdi-domain menu-icon"></i>
-                <span class="menu-title">Department</span>
+            <a class="nav-link" data-bs-toggle="collapse" href="#designation" aria-expanded="false"
+                aria-controls="designation">
+                <i class="mdi mdi-account-file-outline menu-icon"></i>
+                <span class="menu-title">Designation</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="department">
+            <div class="collapse" id="designation">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('cms.department.index') }}">List</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('cms.department.index') }}">Create</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('cms.designation.index') }}">List</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('cms.designation.index') }}">Create</a></li>
                 </ul>
             </div>
         </li>

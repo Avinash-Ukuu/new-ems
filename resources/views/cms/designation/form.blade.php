@@ -3,27 +3,26 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">{{ $object->id ? 'Edit Department' : 'Create Department' }}</h4>
+                <h4 class="card-title">{{ $object->id ? 'Edit Designation' : 'Create Designation' }}</h4>
                 <form class="forms-sample" action="{{ $url }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if ($object->id)
                         @method('PUT')
                     @endif
                     <div class="form-group">
-                        <label for="exampleInputUsername1">Department Name</label>
+                        <label for="exampleInputUsername1">Designation Name</label>
                         <input type="text" class="form-control name" id="exampleInputUsername1" name="name"
                             placeholder="Name" value="{{ old('name', $object->name) }}">
                     </div>
 
-                    <div class="row m-2">
-                        <div class="col-md-3 mb-3">
-                            <div class="form-check form-check-primary">
-                                <input class="form-check-input" type="checkbox" name="status" value="1"
-                                    id="status" {{ old('status', $object->status ?? 0) ? 'checked' : '' }}>
-                                <label class="form-check-label" for="status">
-                                    Status
-                                </label>
-                            </div>
+                    <div class="col-md-3 col-sm-6 mb-2 m-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="status"
+                                id="status" value="1"
+                                {{ $object->status == 1 ? 'checked' : '' }}>
+                            <label class="form-check-label" for="status">
+                                Status
+                            </label>
                         </div>
                     </div>
 
