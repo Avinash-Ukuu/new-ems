@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\cms\DashboardController;
+use App\Http\Controllers\cms\DepartmentController;
 use App\Http\Controllers\cms\ModuleController;
 use App\Http\Controllers\cms\PermissionController;
 use App\Http\Controllers\cms\RoleController;
@@ -24,5 +25,7 @@ Route::prefix('cms')->name('cms.')->middleware(['auth'])->group(function () {
     Route::get("switch/user/form",              [UserController::class,'switchUserForm'])->name('switchUserForm');
     Route::post("switch/user",                  [UserController::class,'switchUser'])->name('switchUser');
     Route::get("logout/switch/user",            [UserController::class,'logoutSwitchUser'])->name('logoutSwitchUser');
+
+    Route::resource('department',               DepartmentController::class);
 
 });
