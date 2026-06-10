@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\cms\DashboardController;
 use App\Http\Controllers\cms\DesignationController;
+use App\Http\Controllers\cms\EmployeeController;
 use App\Http\Controllers\cms\ModuleController;
 use App\Http\Controllers\cms\PermissionController;
 use App\Http\Controllers\cms\RoleController;
@@ -26,6 +27,7 @@ Route::prefix('cms')->name('cms.')->middleware(['auth'])->group(function () {
     Route::post("switch/user",                  [UserController::class,'switchUser'])->name('switchUser');
     Route::get("logout/switch/user",            [UserController::class,'logoutSwitchUser'])->name('logoutSwitchUser');
 
-    Route::resource('designation',               DesignationController::class);
+    Route::resource('designation',              DesignationController::class);
+    Route::resource('employee',                 EmployeeController::class);
 
 });

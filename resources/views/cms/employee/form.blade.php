@@ -1,26 +1,38 @@
+
 @extends('cms.layouts.master')
 @section('content')
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">{{ $object->id ? 'Edit User' : 'Create User' }}</h4>
+                <h4 class="card-title">{{ $object->id ? 'Edit Employee' : 'Create Employee' }}</h4>
                 <form class="forms-sample" action="{{ $url }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if ($object->id)
                         @method('PUT')
                     @endif
-                    <div class="form-group">
-                        <label for="exampleInputUsername1">Name</label>
-                        <input type="text" class="form-control name" id="exampleInputUsername1" name="name"
-                            placeholder="Name" value="{{ old('name', $object->name) }}">
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <label for="exampleInputUsername1">Name</label>
+                            <input type="text" class="form-control name" id="exampleInputUsername1" name="name"
+                                placeholder="Name" value="{{ old('name', $object->name) }}">
 
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email"
+                                name="email" value="{{ old('email', $object->email) }}">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="phone">Phone</label>
+                            <input type="text" class="form-control" id="phone" placeholder="Phone"
+                                name="phone" value="{{ old('phone', $object->phone) }}">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email"
-                            name="email" value="{{ old('email', $object->email) }}">
 
+                    <div class="row">
+                        
                     </div>
+
                     <div class="form-group">
                         <label>Profile Image</label>
 
@@ -65,18 +77,6 @@
 
                         </div>
                     </div>
-                    @if(!empty($object->id))
-                        <div class="col-md-3 col-sm-6 mb-2 m-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="is_active"
-                                    id="is_active" value="1"
-                                    {{ $object->is_active == 1 ? 'checked' : '' }}>
-                                <label class="form-check-label" for="is_active">
-                                    Is Active
-                                </label>
-                            </div>
-                        </div>
-                    @endif
                     <div class="mt-4">
                         <button type="submit" id="submit" class="btn btn-primary me-2">Submit</button>
                         <a href="{{ url()->previous() }}" class="btn btn-light">
@@ -175,6 +175,13 @@
                 } else {
                     $('#submit').prop('disabled', true);
                 }
+            });
+
+            $('#phone').on('input', function(){
+                var inputValue = $(this).val();
+                inputValue = inputValue.replace(/\D/g, '');
+                inputValue = inputValue.substring(0, 10);
+                $(this).val(inputValue);
             });
         });
     </script>

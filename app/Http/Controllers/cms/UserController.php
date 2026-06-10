@@ -63,6 +63,7 @@ class UserController extends Controller
         $user->name             =   $request->name;
         $user->email            =   $request->email;
         $user->password         =   Hash::make('password');
+        $user->is_active        =   1;
         if ($request->has("image")) {
             $imageName  = "user_" . Carbon::now()->timestamp . '.' . $request->file('image')->getClientOriginalExtension();
             $request->file('image')->move(public_path('uploads/users/'), $imageName);
@@ -124,6 +125,7 @@ class UserController extends Controller
         }
         $user->name             =   $request->name;
         $user->email            =   $request->email;
+        $user->is_active        =   isset($request->is_active) ? 1 : 0;
         if ($request->has("image")) {
             if (file_exists("uploads/users/" . $user->image)) {
                 File::delete("uploads/users/" . $user->image);

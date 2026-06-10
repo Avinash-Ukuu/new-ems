@@ -33,7 +33,20 @@
             <div class="collapse" id="designation">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('cms.designation.index') }}">List</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('cms.designation.index') }}">Create</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('cms.designation.create') }}">Create</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#employeeManagement" aria-expanded="false"
+                aria-controls="employeeManagement">
+                <i class="mdi-account-group mdi menu-icon"></i>
+                <span class="menu-title">Employee Management</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="employeeManagement">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('cms.employee.index') }}">List</a></li>
                 </ul>
             </div>
         </li>

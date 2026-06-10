@@ -71,12 +71,14 @@ CREATE TABLE `designations` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `designations` */
 
 insert  into `designations`(`id`,`name`,`status`,`created_at`,`updated_at`) values 
-(1,'web developer',1,'2026-06-06 15:27:52','2026-06-06 09:57:52');
+(1,'web developer',1,'2026-06-06 15:27:52','2026-06-06 09:57:52'),
+(2,'digital marketing',1,'2026-06-10 14:45:51','2026-06-10 14:45:51'),
+(3,'graphic designer',1,'2026-06-10 14:46:14','2026-06-10 14:46:14');
 
 /*Table structure for table `employees` */
 
@@ -85,19 +87,17 @@ DROP TABLE IF EXISTS `employees`;
 CREATE TABLE `employees` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
-  `employee_code` varchar(255) DEFAULT NULL,
   `designation_id` int(11) DEFAULT NULL,
   `reporting_manager_id` int(11) DEFAULT NULL,
-  `joining_date` date DEFAULT NULL,
-  `employment_type` varchar(255) DEFAULT NULL,
   `salary` decimal(12,2) DEFAULT NULL,
   `dob` date DEFAULT NULL,
-  `gender` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `address` text DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `employment_type` varchar(255) DEFAULT NULL,
+  `joining_date` date DEFAULT NULL,
   `emergency_contact_name` varchar(255) DEFAULT NULL,
   `emergency_contact_number` varchar(255) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT NULL,
   `created_by` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -255,12 +255,9 @@ CREATE TABLE `role_user` (
   `user_id` int(11) DEFAULT NULL,
   `role_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `role_user` */
-
-insert  into `role_user`(`id`,`user_id`,`role_id`) values 
-(2,2,1);
 
 /*Table structure for table `roles` */
 
@@ -300,7 +297,11 @@ CREATE TABLE `sessions` (
 /*Data for the table `sessions` */
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
-('TpAX1pfaYQDzWRoE8oQGjAcPyP0iQqQbDje1ii5s',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRDJhQ1lmUVV3NWJmRXIxTld0a3V2NHZ0Y3NGS1QyTkxteUNQZVZpYyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZGVzaWduYXRpb24iO3M6NToicm91dGUiO3M6MjE6ImNtcy5kZXNpZ25hdGlvbi5pbmRleCI7fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1780740102);
+('0nOT8o0AbfrtmyVi00uQNkUgASjbPuhnvIcfRuDJ',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSkFMTUZya3N6TkE5SFEwQUI0Uk9zU0VUZ2Y4U0J4bUcwNzloTFR2ZyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7czo1OiJyb3V0ZSI7czo1OiJsb2dpbiI7fX0=',1781107280),
+('ltIqb7uNewofplISPoJR4pOo7TryYO7M2e6R08hc',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoid2E5Qk1KeG5FN3p0MkJlNllCNVMzcFFhZ0ZjbklnVVkwcTNDSHZTNCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7czo1OiJyb3V0ZSI7czo1OiJsb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZGFzaGJvYXJkIjt9fQ==',1781106539),
+('TpAX1pfaYQDzWRoE8oQGjAcPyP0iQqQbDje1ii5s',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRDJhQ1lmUVV3NWJmRXIxTld0a3V2NHZ0Y3NGS1QyTkxteUNQZVZpYyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZGVzaWduYXRpb24iO3M6NToicm91dGUiO3M6MjE6ImNtcy5kZXNpZ25hdGlvbi5pbmRleCI7fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1780740102),
+('wcb48hv2tUJ31n7uZXtNyfr7g94Gzh9qgqUHKCjb',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiazg4ODNsMzJRcnNXd0RFTUo1QU5GVlR2dFo0SmFlYTQybUV3cG1taCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZGVzaWduYXRpb24iO3M6NToicm91dGUiO3M6MjE6ImNtcy5kZXNpZ25hdGlvbi5pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1780768272),
+('zy2uHSn4E05cNJktRj7TliQZTGn5u45so2nZMqxJ',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiR2ZMOEZtTWZ6d0RoS2hNOXJ2aXoydW1raEFORUVRZEhIU3JuTHRrNSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZW1wbG95ZWUvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjE5OiJjbXMuZW1wbG95ZWUuY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1781107700);
 
 /*Table structure for table `users` */
 
@@ -315,6 +316,7 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) DEFAULT NULL,
   `super_admin` tinyint(1) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -323,9 +325,8 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`remember_token`,`super_admin`,`image`,`created_at`,`updated_at`) values 
-(1,'Avinash','avinash.nast@gmail.com',NULL,'$2y$12$wIl/0pjI46/Y9CBl1ISO6.qwgOUj7J7ptfiMbfMaJcWb1ckzPAkdG',NULL,1,NULL,'2026-05-29 04:34:36','2026-05-29 11:22:33'),
-(2,'shruti pant','shruti.nast@gmail.com',NULL,'$2y$12$z5qqfAfsIfyjqTCUi6/ZHOKhuqzTTA4woT2/oWxqhXVhocnPdsc1O',NULL,NULL,'user_1780049196.png','2026-05-29 07:39:21','2026-05-29 10:06:36');
+insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`remember_token`,`super_admin`,`image`,`is_active`,`created_at`,`updated_at`) values 
+(1,'Avinash','avinash.nast@gmail.com',NULL,'$2y$12$wIl/0pjI46/Y9CBl1ISO6.qwgOUj7J7ptfiMbfMaJcWb1ckzPAkdG',NULL,1,NULL,1,'2026-05-29 04:34:36','2026-05-29 11:22:33');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
