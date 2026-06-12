@@ -47,6 +47,10 @@ CREATE TABLE `cache` (
 
 /*Data for the table `cache` */
 
+insert  into `cache`(`key`,`value`,`expiration`) values 
+('ems_cache_asdfasdf@gmail.com|127.0.0.1','i:1;',1781161383),
+('ems_cache_asdfasdf@gmail.com|127.0.0.1:timer','i:1781161383;',1781161383);
+
 /*Table structure for table `cache_locks` */
 
 DROP TABLE IF EXISTS `cache_locks`;
@@ -98,7 +102,7 @@ CREATE TABLE `employees` (
   `joining_date` date DEFAULT NULL,
   `emergency_contact_name` varchar(255) DEFAULT NULL,
   `emergency_contact_number` varchar(255) DEFAULT NULL,
-  `created_by` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -298,7 +302,10 @@ CREATE TABLE `sessions` (
 
 insert  into `sessions`(`id`,`user_id`,`ip_address`,`user_agent`,`payload`,`last_activity`) values 
 ('0nOT8o0AbfrtmyVi00uQNkUgASjbPuhnvIcfRuDJ',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSkFMTUZya3N6TkE5SFEwQUI0Uk9zU0VUZ2Y4U0J4bUcwNzloTFR2ZyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7czo1OiJyb3V0ZSI7czo1OiJsb2dpbiI7fX0=',1781107280),
+('gfBo6UyGYvBFDU98sn3l1PsQya898jQWDtDFmEKK',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRmNuYzRXU0M0ZFZ4OWJIelkyUW9JWVZJbHFTME5GVGxFMTNvbjFLYSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZW1wbG95ZWUvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjE5OiJjbXMuZW1wbG95ZWUuY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1781161533),
+('HaGN5qmENITHxCytp92f3yozoVPVQXkJACCVEZzo',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaFk1YVVrbU1LcHlzdTc2RWF4NWJjZjRLdmdVWTF3cUhLM083OWY1dSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZW1wbG95ZWUvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjE5OiJjbXMuZW1wbG95ZWUuY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1781152000),
 ('ltIqb7uNewofplISPoJR4pOo7TryYO7M2e6R08hc',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoid2E5Qk1KeG5FN3p0MkJlNllCNVMzcFFhZ0ZjbklnVVkwcTNDSHZTNCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7czo1OiJyb3V0ZSI7czo1OiJsb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZGFzaGJvYXJkIjt9fQ==',1781106539),
+('Qg2l5BHBXsXtHdvRqu7X7REjyncGfuLIFG17GSS4',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUGlJREhPQm9HUGlpRmtwOHBNOWo3MFZkUzBvTHZPZFVkelJuNGFaaiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZW1wbG95ZWUvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjE5OiJjbXMuZW1wbG95ZWUuY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1781253377),
 ('TpAX1pfaYQDzWRoE8oQGjAcPyP0iQqQbDje1ii5s',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRDJhQ1lmUVV3NWJmRXIxTld0a3V2NHZ0Y3NGS1QyTkxteUNQZVZpYyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZGVzaWduYXRpb24iO3M6NToicm91dGUiO3M6MjE6ImNtcy5kZXNpZ25hdGlvbi5pbmRleCI7fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1780740102),
 ('wcb48hv2tUJ31n7uZXtNyfr7g94Gzh9qgqUHKCjb',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiazg4ODNsMzJRcnNXd0RFTUo1QU5GVlR2dFo0SmFlYTQybUV3cG1taCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZGVzaWduYXRpb24iO3M6NToicm91dGUiO3M6MjE6ImNtcy5kZXNpZ25hdGlvbi5pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1780768272),
 ('zy2uHSn4E05cNJktRj7TliQZTGn5u45so2nZMqxJ',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiR2ZMOEZtTWZ6d0RoS2hNOXJ2aXoydW1raEFORUVRZEhIU3JuTHRrNSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbXMvZW1wbG95ZWUvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjE5OiJjbXMuZW1wbG95ZWUuY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1781107700);
