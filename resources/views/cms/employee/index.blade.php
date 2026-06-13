@@ -19,8 +19,8 @@
                                 <th>Phone</th>
                                 <th>Status</th>
                                 <th>Designation</th>
-                                {{-- <th>About</th>
-                                <th>Action</th> --}}
+                                {{-- <th>About</th> --}}
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,15 +44,15 @@
                                             <label class="btn btn-inverse-danger btn-fw">In Active</label>
                                         @endif
                                     </td>
-                                    <td><label class="btn btn-inverse-primary btn-fw">{{ $user->employee->designation ?? "N/A" }}</label></td>
+                                    <td><label class="btn btn-inverse-primary btn-fw">{{ $user->employee->designation->name ?? "N/A" }}</label></td>
                                     {{-- <td><a href="{{ route('cms.employee.show', ['employee' => $user->employee->id]) }}"><i
-                                        class="fa fa-info-circle"></i></a></td>
+                                        class="fa fa-info-circle"></i></a></td> --}}
                                     <td>
                                         <div class="row">
                                             <a href="{{ route('cms.employee.edit',['employee'=>$user->employee->id]) }}"><i class="fa fa-edit"></i></a>
 
                                         </div>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

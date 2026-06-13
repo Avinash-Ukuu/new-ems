@@ -14,13 +14,13 @@
                         <div class="form-group col-4">
                             <label for="exampleInputUsername1">Name</label>
                             <input type="text" class="form-control name" id="exampleInputUsername1" name="name"
-                                placeholder="Name" value="{{ old('name', $object->name) }}">
+                                placeholder="Name" value="{{ old('name', $object->user->name ?? '') }}">
 
                         </div>
                         <div class="form-group col-4">
                             <label for="email">Email address</label>
                             <input type="email" class="form-control" id="email" placeholder="Email"
-                                name="email" value="{{ old('email', $object->email) }}">
+                                name="email" value="{{ old('email', $object->user->email ?? '') }}">
                         </div>
                         <div class="form-group col-4">
                             <label for="phone">Phone</label>
@@ -41,13 +41,13 @@
                             <label for="gender">Gender</label>
                             <select class="form-control select2" id="gender" name="gender">
                                 <option value="">-- Select Gender --</option>
-                                <option value="Male" {{ old('gender', $object->gender ?? '') == 'Male' ? 'selected' : '' }}>
+                                <option value="male" {{ old('gender', $object->gender ?? '') == 'male' ? 'selected' : '' }}>
                                     Male
                                 </option>
-                                <option value="Female" {{ old('gender', $object->gender ?? '') == 'Female' ? 'selected' : '' }}>
+                                <option value="female" {{ old('gender', $object->gender ?? '') == 'female' ? 'selected' : '' }}>
                                     Female
                                 </option>
-                                <option value="Other" {{ old('gender', $object->gender ?? '') == 'Other' ? 'selected' : '' }}>
+                                <option value="other" {{ old('gender', $object->gender ?? '') == 'other' ? 'selected' : '' }}>
                                     Other
                                 </option>
                             </select>
@@ -135,23 +135,6 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-md-4">
-                            <label for="exampleInputUsername2">Select Reporting Manager</label>
-                            <div class="col-sm-12">
-                                <select name="reporting_manager_id" id="reporting_manager_id" class="form-select select2" required>
-
-                                    <option value="">Select Reporting Manager</option>
-
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}" {{ $object->reporting_manager_id == $employee->id ? 'selected' : '' }}>
-                                            {{ $employee->user->name }}
-                                        </option>
-                                    @endforeach
-
-                                </select>
-                            </div>
-                        </div>
-
                         <div class="form-group col-8">
                             <label>Profile Image</label>
 
@@ -182,8 +165,8 @@
                             <div class="mt-3">
 
                                 <img id="previewImage"
-                                    src="{{ !empty($object->image) && file_exists(public_path('uploads/users/' . $object->image))
-                                        ? asset('uploads/users/' . $object->image)
+                                    src="{{ !empty($object->user->image) && file_exists(public_path('uploads/users/' . $object->user->image))
+                                        ? asset('uploads/users/' . $object->user->image)
                                         : asset('images/no-image.jpg') }}"
                                     alt="Preview"
                                     style="
@@ -194,6 +177,23 @@
                                         border:1px solid #ddd;
                                     ">
 
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputUsername2">Select Reporting Manager</label>
+                            <div class="col-sm-12">
+                                <select name="reporting_manager_id" id="reporting_manager_id" class="form-select select2" required>
+
+                                    <option value="">Select Reporting Manager</option>
+
+                                    @foreach ($employees as $employee)
+                                        <option value="{{ $employee->id }}" {{ $object->reporting_manager_id == $employee->id ? 'selected' : '' }}>
+                                            {{ $employee->user->name }}
+                                        </option>
+                                    @endforeach
+
+                                </select>
                             </div>
                         </div>
                     </div>
