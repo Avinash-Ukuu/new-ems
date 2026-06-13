@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\cms;
 
 use App\Http\Controllers\Controller;
+use App\Models\Designation;
 use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,6 +38,8 @@ class EmployeeController extends Controller
         $data['object']         =   new Employee();
         $data['method']         =   'POST';
         $data['url']            =   route('cms.employee.store');
+        $data['designations']   =   Designation::pluck("name","id")->toArray();
+        $data['employees']      =   Employee::with('user')->get();
 
         return view('cms.employee.form',$data);
     }
