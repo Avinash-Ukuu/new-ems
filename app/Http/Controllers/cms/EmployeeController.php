@@ -99,7 +99,14 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data['employee']       =   Employee::with(['user','designation','manager','subordinates'])->find($id);
+        if(empty($data['employee']))
+        {
+            Session::flash('error','Data not found');
+            return back();
+        }
+
+        return view('cms.employee.detail',$data);
     }
 
     /**
@@ -115,7 +122,7 @@ class EmployeeController extends Controller
         $data['method']         =   'PUT';
         $data['url']            =   route('cms.employee.update',['employee'=>$id]);
         $data['designations']   =   Designation::pluck("name","id")->toArray();
-        $data['employees']      =   Employee::with('user')->get();
+        $data['employees']      =   Employee::with('user')->where('id','<>',$id)->get();
 
         return view('cms.employee.form',$data);
     }
